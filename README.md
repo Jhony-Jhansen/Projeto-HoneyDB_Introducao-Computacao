@@ -1,4 +1,4 @@
-# HoneyDB - Deception Technology (Prova de Conceito)
+# HoneyDB - Deception Technology 
 
 Repositório destinado ao projeto final da disciplina de **Introdução à Computação**
 
