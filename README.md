@@ -1,21 +1,26 @@
-# HoneyDB - Deception Technology 
+# HoneyDB: Sistema de Defesa IoT & Deception Technology
 
-Repositório destinado ao projeto final da disciplina de **Introdução à Computação**
+Este projeto explora a intersecção entre Cybersegurança, Internet das Coisas (IoT) e Banco de Dados, implementando o conceito avançado de *Deception Technology*. 
 
-# Sobre o Projeto
-Este projeto explora a intersecção entre **Cybersegurança** e **Banco de Dados**, implementando o conceito de *Deception Technology*. foi criado um dispositivo IoT de borda (isca) que simula um banco de dados vulnerável para atrair atacantes (Ransomware/Hackers). 
+O HoneyDB não é apenas um banco de dados, mas sim um **Honeypot** projetado para atuar como uma armadilha contra ataques cibernéticos e violações físicas de hardware.
 
-Enquanto o atacante acredita estar invadindo um sistema real, o dispositivo coleta suas informações e envia para esta API central, que atua como uma "Caixa Preta" de auditoria.
+## 🛡️ Mitigações Implementadas (Software e Hardware)
 
-# Camadas de Defesa (Implementadas nesta API)
-Este código (`app.py`) foi desenvolvido em Python utilizando o framework **Flask** e conta com 3 mecanismos rigorosos de mitigação de falhas de Software e Rede:
+O sistema foi desenhado para combater 6 riscos de segurança, utilizando uma API em Python e um microcontrolador (simulado no Tinkercad):
 
-1. **Mitigação contra DDoS e Força Bruta:** Algoritmo de *Rate Limiting* (Máx. 5 requisições/minuto por IP).
-2. **Mitigação contra Buffer Overflow (Estouro de Memória):** Limite estrito de `MAX_PAYLOAD_SIZE = 1024 bytes`. Pacotes maiores são sumariamente dropados.
-3. **Mitigação contra Data Poisoning (Injeção SQL/NoSQL):** Função de higienização de entrada (*Data Sanitization*) baseada em Regex, que limpa caracteres perigosos antes da gravação no banco de dados isolado.
+1. **Ataques de Força Bruta / DDoS:** Mitigado via Rate Limiting.
+2. **Buffer Overflow:** Mitigado via limitação rigorosa de *Payload Size* (Max 1KB).
+3. **Data Poisoning / Injection:** Mitigado via Sanitização de Entrada de Dados (Remoção de caracteres destrutivos).
+4. **Sobreaqueecimento de Servidor (Hardware):** Mitigado com sensor de temperatura TMP36 (IoT), que desativa serviços e emite alerta ao ultrapassar 60ºC.
+5. **Violação Física do Gabinete (Tamper):** Mitigado via botão de hardware que, se acionado, corta o banco de dados e aciona alertas de violação.
+6. **Mimetismo e Tarpitting:** O sistema age como um *High-Interaction Honeypot*, simulando a latência e o ambiente de um banco PostgreSQL complexo para reter o atacante na rede falsa.
 
-# Hardware associado
-A contraparte física deste projeto (O Dispositivo de Borda) possui mitigação contra Violação de Gabinete (Tamper) e Sobreaquecimento (DDoS físico), desenvolvido em C++ e simulado via Tinkercad.
+## 🔀 Arquitetura de Versionamento (Branches)
 
-**Autor:** João Pedro Valadares Maciel de Oliveira
-**Foco Profissional:** Cybersegurança e Banco de Dados
+Este repositório foi organizado utilizando **branches**:
+
+* `main`: Versão estável e inicial do HoneyDB (Low-Interaction) com as defesas de rede básicas.
+* `feature/hi-honeypot-tarpit`: Evolução para um *High-Interaction Honeypot* (Poço de Piche), simulando um banco complexo que prende o atacante com falsos sucessos.
+* `feature/geoip-firewall`: Implementação avançada de um **Firewall Dinâmico** com rastreamento geográfico em tempo real (API pública) e banimento automático (Blacklist) de IPs maliciosos.
+
+
