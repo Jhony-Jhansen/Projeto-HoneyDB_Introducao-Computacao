@@ -1,21 +1,12 @@
-# HoneyDB - Deception Technology 
+# HoneyDB: Módulo Firewall Dinâmico & GeoIP
 
-Repositório destinado ao projeto final da disciplina de **Introdução à Computação**
+> **Aviso:** Esta *branch* contém uma funcionalidade específica do projeto HoneyDB. Para ver a documentação geral, visite a branch "main".
 
-# Sobre o Projeto
-Este projeto explora a intersecção entre **Cybersegurança** e **Banco de Dados**, implementando o conceito de *Deception Technology*. foi criado um dispositivo IoT de borda (isca) que simula um banco de dados vulnerável para atrair atacantes (Ransomware/Hackers). 
+## 🛠️ Sobre esta Branch
 
-Enquanto o atacante acredita estar invadindo um sistema real, o dispositivo coleta suas informações e envia para esta API central, que atua como uma "Caixa Preta" de auditoria.
+Nesta versão, o HoneyDB foca no isolamento de perímetro e na rastreabilidade, atuando não apenas como uma isca, mas como um mecanismo de **Defesa Ativa**.
 
-# Camadas de Defesa (Implementadas nesta API)
-Este código (`app.py`) foi desenvolvido em Python utilizando o framework **Flask** e conta com 3 mecanismos rigorosos de mitigação de falhas de Software e Rede:
-
-1. **Mitigação contra DDoS e Força Bruta:** Algoritmo de *Rate Limiting* (Máx. 5 requisições/minuto por IP).
-2. **Mitigação contra Buffer Overflow (Estouro de Memória):** Limite estrito de `MAX_PAYLOAD_SIZE = 1024 bytes`. Pacotes maiores são sumariamente dropados.
-3. **Mitigação contra Data Poisoning (Injeção SQL/NoSQL):** Função de higienização de entrada (*Data Sanitization*) baseada em Regex, que limpa caracteres perigosos antes da gravação no banco de dados isolado.
-
-# Hardware associado
-A contraparte física deste projeto (O Dispositivo de Borda) possui mitigação contra Violação de Gabinete (Tamper) e Sobreaquecimento (DDoS físico), desenvolvido em C++ e simulado via Tinkercad.
-
-**Autor:** João Pedro Valadares Maciel de Oliveira
-**Foco Profissional:** Cybersegurança e Banco de Dados
+### Principais Funcionalidades Implementadas aqui:
+* **Rastreamento Geográfico (GeoIP):** Integração via API REST (`requests`) para rastrear o país e a cidade de origem do IP do atacante em tempo real.
+* **Firewall Dinâmico:** Implementação de uma *Blacklist* na memória do sistema.
+* **Banimento Automático:** Assim que o atacante cai na isca e tem suas intenções confirmadas, seu IP é banido permanentemente, retornando o status HTTP 403 (Forbidden) para qualquer tentativa futura.
