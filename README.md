@@ -4,7 +4,7 @@ Este projeto explora a intersecção entre Cybersegurança, Internet das Coisas 
 
 O HoneyDB não é apenas um banco de dados, mas sim um **Honeypot** projetado para atuar como uma armadilha contra ataques cibernéticos e violações físicas de hardware.
 
-## 🛡️ Mitigações Implementadas (Software e Hardware)
+##  Mitigações Implementadas (Software e Hardware)
 
 O sistema foi desenhado para combater 6 riscos de segurança, utilizando uma API em Python e um microcontrolador (simulado no Tinkercad):
 
@@ -15,7 +15,7 @@ O sistema foi desenhado para combater 6 riscos de segurança, utilizando uma API
 5. **Violação Física do Gabinete (Tamper):** Mitigado via botão de hardware que, se acionado, corta o banco de dados e aciona alertas de violação.
 6. **Mimetismo e Tarpitting:** O sistema age como um *High-Interaction Honeypot*, simulando a latência e o ambiente de um banco PostgreSQL complexo para reter o atacante na rede falsa.
 
-## 🔀 Arquitetura de Versionamento (Branches)
+##  Arquitetura de Versionamento (Branches)
 
 Este repositório foi organizado utilizando **branches**:
 
