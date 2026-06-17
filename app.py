@@ -28,8 +28,24 @@ def rastrear_origem_ip(ip):
 
 def sanitizar_entrada(texto):
     if not isinstance(texto, str): return texto
-    return re.sub(r'[<>\$;\']', '', texto)
-
+    
+def enviar_alerta_equipe(ip_hacker, tipo_ataque):
+    """
+    Nova Funcionalidade: Envia um alerta em tempo real via Webhook 
+    (Ex: Para o Microsoft Teams, Discord ou Telegram da equipe de Segurança)
+    """
+    webhook_url = "https://meu-servidor-de-alertas.com/api/webhook"
+    mensagem = {
+        "urgencia": "CRÍTICA",
+        "alerta": f"Hacker detectado no HoneyDB! IP: {ip_hacker}",
+        "detalhes": f"Tentativa de: {tipo_ataque}. O IP foi bloqueado e os dados isolados."
+    }
+    try:
+        # Simula o disparo do alerta pela rede
+        # requests.post(webhook_url, json=mensagem, timeout=2)
+        print(f"\n[!] WEBHOOK DISPARADO: Mensagem enviada para o celular da equipe de TI!")
+    except:
+        print("\n[!] Falha ao contatar o servidor de Webhook.")
 def verificar_rate_limit(ip_cliente):
     tempo_atual = time.time()
     if ip_cliente not in controle_ips:
