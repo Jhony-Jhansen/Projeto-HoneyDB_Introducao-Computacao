@@ -1,26 +1,12 @@
-# HoneyDB: Sistema de Defesa IoT & Deception Technology
+# HoneyDB: Módulo de Alertas via Webhook
 
-Este projeto explora a intersecção entre Cybersegurança, Internet das Coisas (IoT) e Banco de Dados, implementando o conceito avançado de *Deception Technology*. 
+> **Aviso:** Esta *branch* contém uma funcionalidade específica do projeto HoneyDB. Para ver a documentação geral, visite a branch "main".
 
-O HoneyDB não é apenas um banco de dados, mas sim um **Honeypot** projetado para atuar como uma armadilha contra ataques cibernéticos e violações físicas de hardware.
+## Sobre esta Branch
 
-## 🛡️ Mitigações Implementadas (Software e Hardware)
+Nesta versão, o HoneyDB integra conceitos de Redes e APIs para fornecer monitoramento em tempo real para as equipes de **SOC (Security Operations Center)**.
 
-O sistema foi desenhado para combater 6 riscos de segurança, utilizando uma API em Python e um microcontrolador (simulado no Tinkercad):
-
-1. **Ataques de Força Bruta / DDoS:** Mitigado via Rate Limiting.
-2. **Buffer Overflow:** Mitigado via limitação rigorosa de *Payload Size* (Max 1KB).
-3. **Data Poisoning / Injection:** Mitigado via Sanitização de Entrada de Dados (Remoção de caracteres destrutivos).
-4. **Sobreaqueecimento de Servidor (Hardware):** Mitigado com sensor de temperatura TMP36 (IoT), que desativa serviços e emite alerta ao ultrapassar 60ºC.
-5. **Violação Física do Gabinete (Tamper):** Mitigado via botão de hardware que, se acionado, corta o banco de dados e aciona alertas de violação.
-6. **Mimetismo e Tarpitting:** O sistema age como um *High-Interaction Honeypot*, simulando a latência e o ambiente de um banco PostgreSQL complexo para reter o atacante na rede falsa.
-
-## 🔀 Arquitetura de Versionamento (Branches)
-
-Este repositório foi organizado utilizando **branches**:
-
-* `main`: Versão estável e inicial do HoneyDB (Low-Interaction) com as defesas de rede básicas.
-* `feature/hi-honeypot-tarpit`: Evolução para um *High-Interaction Honeypot* (Poço de Piche), simulando um banco complexo que prende o atacante com falsos sucessos.
-* `feature/geoip-firewall`: Implementação avançada de um **Firewall Dinâmico** com rastreamento geográfico em tempo real (API pública) e banimento automático (Blacklist) de IPs maliciosos.
-
-
+### Principais Funcionalidades Implementadas aqui:
+* **Integração de Rede Externa:** Uso da biblioteca `requests` para estabelecer comunicação com servidores de terceiros.
+* **Alertas em Tempo Real:** Disparo de mensagens automáticas via Webhook.
+* **Prova de Conceito (PoC) com Discord:** O sistema formata os logs de invasão (IP e Ação) em arquivos JSON e os envia via requisição POST para um canal de segurança no Discord, alertando a equipe de TI no exato momento da tentativa de invasão.
