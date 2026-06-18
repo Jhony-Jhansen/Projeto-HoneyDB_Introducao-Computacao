@@ -23,4 +23,5 @@ Este repositório foi organizado utilizando **branches**:
 * `feature/hi-honeypot-tarpit`: Evolução para um *High-Interaction Honeypot* (Poço de Piche), simulando um banco complexo que prende o atacante com falsos sucessos.
 * `feature/geoip-firewall`: Implementação avançada de um **Firewall Dinâmico** com rastreamento geográfico em tempo real (API pública) e banimento automático (Blacklist) de IPs maliciosos.
 
-
+## Link para o Hardware simulado em TINKERCAD:
+## https://www.tinkercad.com/things/a8y5SpKMb2c-honeydb?sharecode=b16tYuKeSzUG3_HgfxWUbcf7IHi6jL2dVULFhVtqk9Y
